@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pi Watch</title>
+    <link rel="stylesheet" href="/css/index.css"/>
+    <script src="/script/jquery.js"></script>
+    <script src="/script/index.js"></script>
+</head>
+<body>
+<div class="navbar">
+    <div class="menu-container" onclick="toggleDrawer()">
+        <img src="/icon/menu.png" class="menu" alt="菜单">
+    </div>
+</div>
+<div class="main">
+    <div class="card">
+        <h4 class="title">网络状态</h4>
+        <ul class="linear">
+            <li th:each="inet:${interfaces}" class="master-detail">
+                <p th:text="${inet.name}" class="title"></p>
+                <p th:text="'MAC地址:'+${inet.macAddress}"></p>
+                <p th:each="addrs:${inet.inetAddresses}" th:text="${addrs.type}+':'+${addrs.address}"></p>
+            </li>
+        </ul>
+    </div>
+    <div class="card">
+        <h4 class="title">系统信息</h4>
+    </div>
+</div>
+<div class="drawer hidden" id="drawer1">
+
+</div>
+<div class="mask" id="drawerMask" onclick="toggleDrawer()" hidden></div>
+</body>
+</html>

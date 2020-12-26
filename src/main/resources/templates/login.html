@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pi Watch</title>
+    <style>
+        html{
+            height: 100%;
+        }
+        body{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: crimson;
+        }
+        .title{
+            color: aliceblue;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        input{
+            width: 200px;
+            height: 32px;
+            border: none;
+            outline: none;
+            background: aliceblue;
+            padding: 2px;
+            border-radius: 5px 5px 5px 5px;
+            margin-top: 10px;
+        }
+        .warn{
+            display: flex;
+            margin: 0;
+            width: 200px;
+            height: 32px;
+            border-radius: 2px;
+            background: darkorange;
+            color: white;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">Pi Login</h1>
+    <p class="warn" th:text="${status}" th:if="${status!=null}"></p>
+    <form method="post" action="/user/login">
+        <label>
+            <input type="text" placeholder="管理员帐号" name="username">
+        </label>
+        <label>
+            <input type="password" placeholder="管理员密码" name="password">
+        </label>
+        <label>
+            <input type="submit" value="登陆"/>
+        </label>
+    </form>
+</body>
+</html>

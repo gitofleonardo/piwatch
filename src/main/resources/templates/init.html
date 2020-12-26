@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Init your backend manager</title>
+    <script src="/script/jquery.js"></script>
+    <style>
+        html{
+            height: 100%;
+            width: 100%;
+        }
+        body{
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: crimson;
+        }
+        .title{
+            color: aliceblue;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        input{
+            background: white;
+            width: 200px;
+            height: 32px;
+            border-radius: 2px;
+            outline: none;
+            border: none;
+            margin-top: 10px;
+            transition-duration: 500ms;
+        }
+        input:focus{
+            width: 250px;
+        }
+        button{
+            color: white;
+            width: 200px;
+            height: 32px;
+            border: none;
+            outline: none;
+            margin-top: 10px;
+            background: deepskyblue;
+            border-radius: 2px;
+            transition-duration: 500ms;
+        }
+        button:hover{
+            background: #00a0d6;
+            box-shadow: grey;
+        }
+        label{
+            color: white;
+        }
+    </style>
+    <script>
+        function initSystem() {
+            const username=$("#username").val()
+            const password=$("#password").val()
+            const passwordRepeat=$("#password-repeat").val()
+            if (username==="" || password===""){
+                alert("信息未完整")
+            }else if (password !==passwordRepeat){
+                alert("两次密码不一致")
+            }else{
+                const data={}
+                data["username"]=username
+                data["password"]=password
+                $.ajax({
+                    url:"/init",
+                    method:"POST",
+                    data:data,
+                    success:function(result) {
+                        console.log(result)
+                        if (result["result"]==="SUCCESS"){
+                            window.location="/login"
+                        }
+                    },
+                    error:function (e) {
+                        alert("出了点小问题")
+                    }
+                })
+            }
+        }
+    </script>
+</head>
+<body>
+<h1 class="title">初始化您的后台管理系统</h1>
+<form method="post">
+    <label>
+        <input type="text" name="username" id="username" placeholder="用户名">
+    </label>
+    <label>
+        <input type="password" name="password" id="password" placeholder="密码">
+    </label>
+    <label>
+        <input type="password" name="password-repeat" id="password-repeat" placeholder="再次输入密码确认">
+    </label>
+    <label>
+        <button type="button" onclick="initSystem()">进入系统</button>
+    </label>
+</form>
+</body>
+</html>

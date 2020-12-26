@@ -1,0 +1,137 @@
+html{
+    height: 100%;
+}
+body{
+    margin: 0;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+}
+.navbar{
+    width: 100%;
+    height: 64px;
+    background: crimson;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+.navbar img.menu{
+    width: 16px;
+    height: 16px;
+}
+.navbar .menu-container{
+    width: 32px;
+    height: 32px;
+    margin-left: 16px;
+    border-radius: 16px;
+    transition-duration: 500ms;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.navbar .menu-container:hover{
+    background: rgba(255, 255, 255, 0.5);
+}
+.drawer{
+    z-index: 10;
+    background: white;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    transition-duration: 500ms;
+}
+.drawer.hidden{
+    left: -100%;
+}
+.mask{
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(128, 128, 128, 0.6);
+    transition-duration: 500ms;
+}
+.main{
+    display: flex;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    background: rgb(243, 243, 243);
+}
+.card{
+    margin: 5px;
+    padding: 5px;
+    background: white;
+    box-shadow:2px 2px 5px #cbcbcb;
+    width: 300px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    transition-duration: 500ms;
+}
+.card:hover{
+    width: 50%;
+    height: 50%;
+    box-shadow:5px 5px 6px #cbcbcb;
+    margin-top: -10px;
+}
+.card .title{
+    color: grey;
+    margin: 10px;
+}
+ul.linear{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+.net-state-item{
+    width: 100%;
+    background: white;
+}
+.net-state-item p{
+    margin: 0;
+}
+
+ul.linear::-webkit-scrollbar{
+    width: 5px;
+    background: white;
+}
+ul.linear::-webkit-scrollbar-thumb{
+    background: crimson;
+    width: 5px;
+    border-radius: 2px;
+}
+li.master-detail{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 100%;
+}
+li.master-detail p{
+    padding: 0;
+    margin: 5px;
+    font-size: small;
+}
+li.master-detail p.title{
+    font-size: large;
+    margin: 5px;
+}
