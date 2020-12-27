@@ -33,7 +33,7 @@ class IndexController {
                         append(":")
                     }
                     val b=networkInterface.hardwareAddress[i]
-                    val s=b.toInt().toString(16)
+                    val s=b.toString(16)
                     append(s)
                 }
             }.toString(),networkInterface?.inetAddresses?.toList()?.map { getNetAddress(it) }?: emptyList())
@@ -51,6 +51,6 @@ class IndexController {
                 TYPE_UNKNOWN
             }
         }
-        return NetAddress(type,address.hostName)
+        return NetAddress(type,address.hostAddress)
     }
 }
